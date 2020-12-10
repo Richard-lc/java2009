@@ -1,4 +1,4 @@
-package com.glc.week06.day04;
+package com.glc.utils;
 
 import java.io.IOException;
 import java.sql.*;
@@ -8,10 +8,11 @@ import java.util.Properties;
  * @author Richard
  * 2020/12/10 9:58
  */
-public class DB {
+public class DBUtils {
 
     public Connection conn;
     private Statement st;
+    private PreparedStatement ps;
     private ResultSet rs;
     private int result;
 
@@ -24,7 +25,7 @@ public class DB {
         Properties properties = new Properties();
         try {
             //加载配置文件
-            properties.load(DB.class.getClassLoader().getResourceAsStream("db.properties"));
+            properties.load(DBUtils.class.getClassLoader().getResourceAsStream("db.properties"));
             driver = properties.getProperty("driver");
             url = properties.getProperty("url");
             username = properties.getProperty("username");
@@ -40,7 +41,7 @@ public class DB {
         }
     }
 
-    public DB() {
+    public DBUtils() {
         this.conn = getConnection();
     }
 
@@ -79,6 +80,20 @@ public class DB {
         return rs;
     }
 
+    //根据id查询
+    public ResultSet getRsById(String table, Integer id) {
+        ResultSet rs = null;
+        try {
+            String sql = "select * from " + table + " where id = ?;";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
     //关闭资源
     public void close() {
         try {
@@ -88,6 +103,9 @@ public class DB {
             if (st != null) {
                 st.close();
             }
+            if (ps != null) {
+                ps.close();
+            }
             if (rs != null) {
                 rs.close();
             }
@@ -96,4 +114,15 @@ public class DB {
         }
     }
 
+    public void close(AutoCloseable... ac) {
+        for (AutoCloseable closeable : ac) {
+            if (ac != null) {
+                try {
+                    closeable.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }

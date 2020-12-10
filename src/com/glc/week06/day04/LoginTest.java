@@ -1,5 +1,7 @@
 package com.glc.week06.day04;
 
+import com.glc.utils.DBUtils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,8 +29,8 @@ public class LoginTest {
     }
 
     private static User login(String username, String password) {
-        DB db = new DB();
-        Connection conn = db.getConnection();
+        DBUtils dbUtils = new DBUtils();
+        Connection conn = dbUtils.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String str = "select * from user where username = ? and password = ?";
@@ -50,7 +52,7 @@ public class LoginTest {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            db.close();
+            dbUtils.close();
         }
         return null;
     }
