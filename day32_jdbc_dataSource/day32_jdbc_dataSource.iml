@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lombok" level="application" />
     <orderEntry type="library" name="mysql-connector-java-5.1.25-bin" level="application" />
+    <orderEntry type="library" name="druid-1.1.5" level="application" />
   </component>
 </module>

@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Java2009.iml" filepath="$PROJECT_DIR$/Java2009.iml" />
       <module fileurl="file://$PROJECT_DIR$/day31_jdbc/day31_jdbc.iml" filepath="$PROJECT_DIR$/day31_jdbc/day31_jdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day31_jdbc_transation/day31_jdbc_transation.iml" filepath="$PROJECT_DIR$/day31_jdbc_transation/day31_jdbc_transation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day32_jdbc_dataSource/day32_jdbc_dataSource.iml" filepath="$PROJECT_DIR$/day32_jdbc_dataSource/day32_jdbc_dataSource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day32_jdbc_orm/day32_jdbc_orm.iml" filepath="$PROJECT_DIR$/day32_jdbc_orm/day32_jdbc_orm.iml" />
     </modules>
   </component>
 </project>
